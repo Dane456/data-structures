@@ -7,6 +7,8 @@ var Queue = function() {
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
+    var key = someInstance.size();
+    storage[key] = value;
   };
 
   someInstance.dequeue = function() {
