@@ -15,9 +15,6 @@ var queueMethods = {};
 queueMethods.enqueue = function(value) {
   this.back++;
   this.storage[this.back - 1] = value;
-  // let key = Object.keys(this.storage).length;
-  // this.storage[key] = value;
-  // console.log('enqueue: ' + JSON.stringify(this.storage));
 };
 
 queueMethods.dequeue = function() {
@@ -28,21 +25,10 @@ queueMethods.dequeue = function() {
 
   return value;
 
-  // var value = this.storage[0];
-  // for (var prop in this.storage) {
-  //   if (Number(prop) < Object.keys(this.storage).length - 1) {
-  //     this.storage[prop] = this.storage[Number(prop) + 1];  
-  //   }
-  // }
-  // delete this.storage[Object.keys(this.storage).length - 1];
-  // console.log('dequeued value: ' + value);
-  // console.log('resulting storage: ' + JSON.stringify(this.storage));
-  // return value;
 };
 
 queueMethods.size = function() {
-  // console.log('in size');
-  // console.log('this.storage: ' + storage);
+
   return Math.max(0, this.back - this.front);
 };
 
