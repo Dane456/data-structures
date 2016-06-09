@@ -9,7 +9,7 @@ var Queue = function() {
   someInstance.enqueue = function(value) {
     var key = someInstance.size();
     storage[key] = value;
-    console.log('enqueue: ' + JSON.stringify(storage));
+    // console.log('enqueue: ' + JSON.stringify(storage));
   };
 
   someInstance.dequeue = function() {
@@ -19,7 +19,7 @@ var Queue = function() {
       storage[key] = storage[Number(key) + 1];
     }
     delete storage[someInstance.size() - 1];
-    console.log('dequeue: ' + value + ' ' + JSON.stringify(storage));
+    // console.log('dequeue: ' + value + ' ' + JSON.stringify(storage));
     return value;
   };
 
