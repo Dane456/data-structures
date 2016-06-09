@@ -34,6 +34,7 @@ define([
 
       verifyClass(instantiator).followsPattern(variant, {}, prototypeOfInstances);
 
+      
       it('reports a size of zero for a new stack', function() {
         expect(stack.size()).to.equal(0);
       });
@@ -61,7 +62,7 @@ define([
         stack.pop();
         expect(stack.size()).to.equal(0);
       });
-
+      
       it('allows sequentially additing and removing items', function() {
         stack.push('a');
         expect(stack.pop()).to.equal('a');
@@ -119,7 +120,7 @@ define([
       it('does not error when removing from an empty queue', function() {
         expect(function() { queue.dequeue(); }).not.throws();
       });
-
+      
       it('reports a size of 1 after adding two items and removing one', function() {
         queue.enqueue('a');
         queue.enqueue('b');
