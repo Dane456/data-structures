@@ -1,19 +1,38 @@
 var BinarySearchTree = function(value) {
-	this.value = value;
-	this.left = undefined;
-	this.right = undefined;
+  var instance = Object.create(treeMethods);
+  instance.value = value;
+	instance.left = null;
+	instance.right = null;
+  return instance;
 };
 
+var treeMethods = {};
 
-BinarySearchTree.prototype.insert = function(first_argument) {
+treeMethods.insert = function(node) {
+  //debugger;
+  if(typeof node === 'number'){
+    var node = BinarySearchTree(node);
+  }  
+  if (node.value <= this.value) {
+    if (this.left === null) {
+      this.left = node;
+    } else {
+      treeMethods.insert.call(this.left, node);
+    }
+  } else if (node.value >= this.value) {
+    if (this.right === null) {
+      this.right = node;
+    } else {
+      treeMethods.insert.call(this.right, node);
+    }
+  }
+};
+
+treeMethods.contains = function(node) {
 	// body...
 };
 
-BinarySearchTree.prototype.contains = function(first_argument) {
-	// body...
-};
-
-BinarySearchTree.prototype.depthFirstLog = function(first_argument) {
+treeMethods.depthFirstLog = function() {
 	// body...
 };
 /*
