@@ -40,7 +40,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   var hasFromNode = false;
   var hasToNode = false;
   _.each(this.edges, function(nodePair) {
-    _.each(nodePair, function(node, nodeIndex) {
+    _.each(nodePair, function(node) {
       if (node === fromNode) {
         hasFromNode = true;
       }
@@ -59,6 +59,24 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  var hasFromNode = false;
+  var hasToNode = false;
+  for (var i = 0; i < this.edges.length; i++) {
+    for (var j = 0; j < this.edges[i].length; j++) {
+      if (this.edges[i][j] === fromNode) {
+        hasFromNode = true;
+      }
+      if (this.edges[i][j] === toNode) {
+        hasToNode = true;
+      }
+      if (hasFromNode && hasToNode) {
+        this.edges.splice(i, 1);
+        break;
+      }
+    }
+
+  }
+
 };
 
 // Pass in a callback which will be executed on each node of the graph.
