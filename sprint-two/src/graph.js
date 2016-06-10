@@ -23,17 +23,16 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  _.each(this.nodes, function(item, i) {
+  // _.each(this.nodes, function(item, i) {
+  //   if (item === node) {
+  //     this.nodes.splice(i, 1);
+  //   }
+  // });
+  for (var i = 0; i < this.nodes.length; i++) {
     if (this.nodes[i] === node) {
       this.nodes.splice(i, 1);
     }
-  });
-  // for (var i = 0; i < this.nodes.length; i++) {
-  //   if (this.nodes[i] === node) {
-  //     this.nodes.splice(i, 1);
-  //   }
-  // }
-  return false;
+  }
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -41,7 +40,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   var hasFromNode = false;
   var hasToNode = false;
   _.each(this.edges, function(nodePair) {
-    _.each(nodePair, function(node, node) {
+    _.each(nodePair, function(node, nodeIndex) {
       if (node === fromNode) {
         hasFromNode = true;
       }
