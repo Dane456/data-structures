@@ -1,14 +1,14 @@
 var BinarySearchTree = function(value) {
-  var instance = Object.create(treeMethods);
+  var instance = Object.create(binTreeMethods);
   instance.value = value;
 	instance.left = null;
 	instance.right = null;
   return instance;
 };
 
-var treeMethods = {};
+var binTreeMethods = {};
 
-treeMethods.insert = function(node) {
+binTreeMethods.insert = function(node) {
   //debugger;
   if(typeof node === 'number'){
     var node = BinarySearchTree(node);
@@ -17,41 +17,41 @@ treeMethods.insert = function(node) {
     if (this.left === null) {
       this.left = node;
     } else {
-      treeMethods.insert.call(this.left, node);
+      binTreeMethods.insert.call(this.left, node);
     }
   } else {
     if (this.right === null) {
       this.right = node;
     } else {
-      treeMethods.insert.call(this.right, node);
+      binTreeMethods.insert.call(this.right, node);
     }
   }
 };
 
-treeMethods.contains = function(node) {
+binTreeMethods.contains = function(node) {
   if(node === null){
     return false;
   } else if (node === this.value) {
     return true;
    } else if (node < this.value) {
-      treeMethods.contains.call(this.left, node);
+      binTreeMethods.contains.call(this.left, node);
    } else if (node > this.value) {
-      if(treeMethods.contains.call(this.right, node)){
+      if(binTreeMethods.contains.call(this.right, node)){
         return true;
       }
    }
    return false;
 };
 
-treeMethods.depthFirstLog = function(fn) {
-  var treeCopy = this;
-  if(this.left === null && this.right === null){
-    fn(this.value);
-    delete this;
-  } else if (this.left){
-    treeMethods.depthFirstLog.call(this.left, fn)
-  } else if (this.right){
-    treeMethods.depthFirstLog.call(this.right, fn)
+binTreeMethods.depthFirstLog = function(fn) {
+
+  fn(this.value);
+
+  if (this.left){
+    binTreeMethods.depthFirstLog.call(this.left, fn)
+  }
+  if (this.right){
+    binTreeMethods.depthFirstLog.call(this.right, fn)
   }
 
 };
