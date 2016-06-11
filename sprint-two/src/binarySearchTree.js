@@ -61,7 +61,8 @@ binTreeMethods.breadthFirstLog = function(fn) {
   do {
     for (var i = 0; i < queue.length; i++) {
       var node = queue[i];
-      fn(node);
+      console.log('node: ' + node);
+      fn(node.value);
       queue.shift();
       if (node.left) {
         queue.push(node.left);
