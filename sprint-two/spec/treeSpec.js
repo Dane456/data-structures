@@ -40,6 +40,14 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
+});
+
+describe('#tree add/remove parents, traverse', function() {
+  var tree;
+
+  beforeEach(function() {
+    tree = Tree(1);
+  });
 
   it('should correctly detect parents', function() {
     tree.addChild(2);
