@@ -57,13 +57,16 @@ binTreeMethods.depthFirstLog = function(fn) {
 
 binTreeMethods.breadthFirstLog = function(fn) {
   var queue = [];
+
   queue.push(this);
+
   do {
-    for (var i = 0; i < queue.length; i++) {
-      var node = queue[i];
-      console.log('node: ' + node);
+    var length = queue.length;
+    for (var i = 0; i < length; i++) {
+      var node = queue.shift();
+
       fn(node.value);
-      queue.shift();
+
       if (node.left) {
         queue.push(node.left);
       }
@@ -72,7 +75,11 @@ binTreeMethods.breadthFirstLog = function(fn) {
       }
     }
   } while (queue.length > 0);
+};
 
+binTreeMethods.rebalanceTree = function() {
+  var unsortedArray = [];
+  unsortedArray.push();
 };
 /*
  * Complexity: What is the time complexity of the above functions?
