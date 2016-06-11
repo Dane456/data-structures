@@ -9,7 +9,7 @@ var BinarySearchTree = function(value) {
 var binTreeMethods = {};
 
 binTreeMethods.insert = function(node) {
-  //debugger;
+
   if(typeof node === 'number'){
     var node = BinarySearchTree(node);
   }  
@@ -58,3 +58,4 @@ binTreeMethods.depthFirstLog = function(fn) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+ // O(log n)
