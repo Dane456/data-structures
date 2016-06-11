@@ -2,7 +2,7 @@ describe('tree', function() {
   var tree;
 
   beforeEach(function() {
-    tree = Tree();
+    tree = Tree(1);
   });
 
   it('should have methods named "addChild" and "contains", and a property named "value"', function() {
@@ -39,6 +39,33 @@ describe('tree', function() {
     tree.children[1].addChild(8);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+  });
+
+  it('should correctly detect parents', function() {
+    tree.addChild(2);
+    tree.children[0].addChild(3);
+    expect(tree.children[0].children[0].parent.value).to.equal(2);
+  });
+
+  it('should correctly remove parents', function() {
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.children[0].addChild(1);
+    var orphan = tree.children[0];
+    tree.children[0].removeFromParent();
+    expect(tree.children.length).to.equal(1);
+    expect(orphan.parent).to.equal(null);
+  });
+
+  it('should execute a callback on every value in a tree using "traverse"', function() {
+    var array = [];
+    var func = function(value) { array.push(value); };
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.children[0].addChild(1);
+    tree.children[1].addChild(4);
+    tree.traverse(func);
+    expect(array).to.eql([1, 2, 1, 3, 4]);
   });
 
 });
