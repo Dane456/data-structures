@@ -14,7 +14,6 @@ Queue.prototype.enqueue = function(value) {
 };
 
 Queue.prototype.dequeue = function() {
-  console.log('storage at beginning of dequeue: ' + JSON.stringify(this.storage));
   var value = this.storage[this.front];
   delete this.storage[this.front];
   this.front++;

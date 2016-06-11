@@ -53,6 +53,24 @@ binTreeMethods.depthFirstLog = function(fn) {
   if (this.right) {
     binTreeMethods.depthFirstLog.call(this.right, fn);
   }
+};
+
+binTreeMethods.breadthFirstLog = function(fn) {
+  var queue = [];
+  queue.push(this);
+  do {
+    for (var i = 0; i < queue.length; i++) {
+      var node = queue[i];
+      fn(node);
+      queue.shift();
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+  } while (queue.length > 0);
 
 };
 /*
