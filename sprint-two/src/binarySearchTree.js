@@ -1,8 +1,8 @@
 var BinarySearchTree = function(value) {
   var instance = Object.create(binTreeMethods);
   instance.value = value;
-	instance.left = null;
-	instance.right = null;
+  instance.left = null;
+  instance.right = null;
   return instance;
 };
 
@@ -10,7 +10,7 @@ var binTreeMethods = {};
 
 binTreeMethods.insert = function(node) {
   //debugger;
-  if(typeof node === 'number'){
+  if (typeof node === 'number') {
     var node = BinarySearchTree(node);
   }  
   if (node.value < this.value) {
@@ -29,29 +29,29 @@ binTreeMethods.insert = function(node) {
 };
 
 binTreeMethods.contains = function(node) {
-  if(node === null){
+  if (node === null) {
     return false;
   } else if (node === this.value) {
     return true;
-   } else if (node < this.value) {
-      binTreeMethods.contains.call(this.left, node);
-   } else if (node > this.value) {
-      if(binTreeMethods.contains.call(this.right, node)){
-        return true;
-      }
-   }
-   return false;
+  } else if (node < this.value) {
+    binTreeMethods.contains.call(this.left, node);
+  } else if (node > this.value) {
+    if (binTreeMethods.contains.call(this.right, node)) {
+      return true;
+    }
+  }
+  return false;
 };
 
 binTreeMethods.depthFirstLog = function(fn) {
 
   fn(this.value);
 
-  if (this.left){
-    binTreeMethods.depthFirstLog.call(this.left, fn)
+  if (this.left) {
+    binTreeMethods.depthFirstLog.call(this.left, fn);
   }
-  if (this.right){
-    binTreeMethods.depthFirstLog.call(this.right, fn)
+  if (this.right) {
+    binTreeMethods.depthFirstLog.call(this.right, fn);
   }
 
 };
