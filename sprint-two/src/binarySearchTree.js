@@ -48,7 +48,7 @@ binTreeMethods.contains = function(node) {
 binTreeMethods.depthFirstLog = function(fn) {
 
   fn(this.value);
-
+ 
   if (this.left) {
     binTreeMethods.depthFirstLog.call(this.left, fn);
   }
@@ -80,8 +80,7 @@ binTreeMethods.breadthFirstLog = function(fn) {
 };
 
 binTreeMethods.rebalanceTree = function() {
-  var unsortedArray = [];
-  unsortedArray.push();
+
 };
 
 binTreeMethods.rebalance = function() {
