@@ -3,8 +3,8 @@ var BinarySearchTree = function(value) {
   instance.value = value;
   instance.left = null;
   instance.right = null;
-  instance.max = 0;
-  instance.min = 0;
+  instance.max = 1;
+  instance.min = 1;
   return instance;
 };
 
@@ -89,21 +89,14 @@ binTreeMethods.rebalance = function() {
     arr.push(nodeVal);
   };
   binTreeMethods.breadthFirstLog(pushNodes);
-  binTreeMethods.depthFirstLog(function(node) {
-    delete node;
-  });
   arr.sort();
-  var midIndex = Math.ceiling(arr.length / 2 );
-  for (var i = 0; midIndex + i < arr.length; i++) {
-    if (i === 0) {
-      binTreeMethods.insert(arr[midIndex]);
-    } else {
-      binTreeMethods.insert(arr[midIndex - i]);
-      if (arr[midIndex + i]) {
-        binTreeMethods.insert(arr[midIndex - i]);
-      }
-    }
-    
+  var midIndex = Math.floor(arr.length / 2 );
+  this.value = binTreeMethods.insert(arr[midIndex]);
+  for (var i = 1; midIndex + i < arr.length; i++) {
+    binTreeMethods.insert(arr[midIndex - i]);
+    if (arr[midIndex + i]) {
+      binTreeMethods.insert(arr[midIndex + i]);
+    } 
   }
 };
 /*
