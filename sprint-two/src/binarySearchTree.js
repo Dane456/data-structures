@@ -3,6 +3,8 @@ var BinarySearchTree = function(value) {
   instance.value = value;
   instance.left = null;
   instance.right = null;
+  instance.max = 0;
+  instance.min = 0;
   return instance;
 };
 
@@ -73,6 +75,30 @@ binTreeMethods.breadthFirstLog = function(fn) {
     }
   } while (queue.length > 0);
 
+};
+
+binTreeMethods.rebalance = function() {
+  var arr = [];
+  var pushNodes = function(nodeVal) {
+    arr.push(nodeVal);
+  };
+  binTreeMethods.breadthFirstLog(pushNodes);
+  binTreeMethods.depthFirstLog(function(node) {
+    delete node;
+  });
+  arr.sort();
+  var midIndex = Math.ceiling(arr.length / 2 );
+  for (var i = 0; midIndex + i < arr.length; i++) {
+    if (i === 0) {
+      binTreeMethods.insert(arr[midIndex]);
+    } else {
+      binTreeMethods.insert(arr[midIndex - i]);
+      if (arr[midIndex + i]) {
+        binTreeMethods.insert(arr[midIndex - i]);
+      }
+    }
+    
+  }
 };
 /*
  * Complexity: What is the time complexity of the above functions?
